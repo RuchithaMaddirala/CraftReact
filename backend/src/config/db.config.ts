@@ -11,9 +11,9 @@ const connectDB = async () => {
     await mongoose.connect(MONGO_URI, {
       dbName: 'craftreact',
     });
-    console.log('✅ Connected to MongoDB');
+    console.log('Connected to MongoDB');
   } catch (err) {
-    console.error('❌ MongoDB connection failed:', err);
+    console.error('MongoDB connection failed:', err);
     process.exit(1);
   }
 };
