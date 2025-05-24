@@ -1,13 +1,22 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import connectDB from './config/db.config';
 import authRoutes from './routes/auth.routes';
-import protectedRoutes from './routes/protected.routes'
+import protectedRoutes from './routes/protected.routes';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// CORS configuration
+const corsOptions = {
+  origin: process.env.CLIENT_URL || '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+app.use(cors(corsOptions));
 
 // Middleware
 app.use(express.json());
